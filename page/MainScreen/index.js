@@ -13,7 +13,7 @@ const TabStack = createBottomTabNavigator();
 export default function MainScreen() {
   return (
     <TabStack.Navigator 
-			initialRouteName="Home"
+			initialRouteName="ShoppingCart"
 			screenOptions={{
 				headerShown: false
 			}}
@@ -37,7 +37,7 @@ export default function MainScreen() {
 							break;
 					}
 					// You can return any component that you like here!
-					return <FontAwesomeIcon icon={ icon } color={color} size={ 20 } />;
+					return <FontAwesomeIcon icon={ icon } color={color} size={ 25 } />;
 				},
 				tabBarLabel: () => {
 					let label
@@ -57,13 +57,14 @@ export default function MainScreen() {
 						default:
 							break;
 					}
-					return <Text>{label}</Text> 
+					return <Text style={{ fontFamily: 'Poppins_400Regular', fontSize: 12 }} >{label}</Text> 
 				}
 			})}
 			tabBarOptions={{
 				activeTintColor: '#3CD691',
 				inactiveTintColor: '#4C4752',
 				keyboardHidesTabBar: true,
+				style:{height: 65}
 			}}
 		>
 			<TabStack.Screen name="Home" component={Home} />

@@ -5,7 +5,6 @@ import {
   TextInput, 
   Text, 
   Image, 
-  KeyboardAvoidingView,
   TouchableOpacity,
   ScrollView,
   FlatList 
@@ -55,15 +54,14 @@ export default function Home({ navigation }) {
     }
   ]
   return (
-    <KeyboardAvoidingView behavior='padding' style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContainer} >
+    <ScrollView contentContainerStyle={styles.scrollContainer} style= {styles.container}>
       <View style={styles.background} />
       <View style={styles.headerContainer}>
         <TextInput 
            style={styles.input}
            placeholder="Cari Barang..."
         />
-        <View style={styles.IconContainer}>
+        <View style={styles.iconContainer}>
           <IconButton icon={ faHeart } color="#fff" iconSize={headerIconsize} onPress={() => {navigation.navigate('Favorites')}}/>
           <IconButton icon={ faEnvelope } color="#fff" iconSize={headerIconsize} onPress={() => {navigation.navigate('Inbox')}}/>
           <IconButton icon={ faBell } color="#fff" iconSize={headerIconsize} onPress={() => {navigation.navigate('Notification')}} />
@@ -108,7 +106,13 @@ export default function Home({ navigation }) {
             </Text>
           </TouchableOpacity>
         </View>
-        <ScrollView style={styles.categoryMain} contentContainerStyle={styles.contentScrollH} horizontal showsHorizontalScrollIndicator={false}>
+        <ScrollView 
+          style={styles.categoryMain} 
+          contentContainerStyle={styles.contentScrollH} 
+          horizontal 
+          showsHorizontalScrollIndicator={false}
+          alwaysBounceVertical={false}
+        >
             <FlatList
                 keyExtractor={(item, index) => index.toString()}
                 contentContainerStyle={{alignSelf: 'flex-start'}}
@@ -116,7 +120,7 @@ export default function Home({ navigation }) {
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 data={itemArray}
-                renderItem={({ item: { name, price, desc}, index }) => {
+                renderItem={({ item: { name, price, desc }}) => {
                   return <ItemCard name={name} price={price} desc={desc} />
                 }}
             />
@@ -133,7 +137,13 @@ export default function Home({ navigation }) {
             </Text>
           </TouchableOpacity>
         </View>
-        <ScrollView style={styles.categoryMain} contentContainerStyle={styles.contentScrollH} horizontal showsHorizontalScrollIndicator={false}>
+        <ScrollView 
+          style={styles.categoryMain} 
+          contentContainerStyle={styles.contentScrollH} 
+          horizontal 
+          showsHorizontalScrollIndicator={false}
+          alwaysBounceVertical={false}
+        >
             <FlatList
                 keyExtractor={(item, index) => index.toString()}
                 contentContainerStyle={{alignSelf: 'flex-start'}}
@@ -147,14 +157,15 @@ export default function Home({ navigation }) {
             />
         </ScrollView>
       </View>
-      </ScrollView>
-    </KeyboardAvoidingView> 
+    </ScrollView>
+    
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: '8%',
+    flex: 1,
+    marginTop: '8%',
     width: '100%',
     backgroundColor: '#fff',
   },
@@ -174,6 +185,7 @@ const styles = StyleSheet.create({
     zIndex: -1
   }, 
   headerContainer:{
+    marginTop: 10,
     width: '100%',
     paddingHorizontal: 20,
     flexDirection: 'row',
@@ -193,7 +205,7 @@ const styles = StyleSheet.create({
     height: 200,
     marginTop: 20
   },
-  IconContainer:{
+  iconContainer:{
     alignItems: 'center',
     flexDirection: 'row',
   },

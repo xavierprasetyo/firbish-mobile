@@ -27,10 +27,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 10,
     height: 350,
-    width: 170,
+    width: 190,
     marginVertical: 20,
     marginHorizontal: 10,
     shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
     elevation: 6,
   },
   imageContainer:{
