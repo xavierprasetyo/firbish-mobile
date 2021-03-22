@@ -1,15 +1,14 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-export default function IconButton({ icon, onPress, color, iconSize }) {
+export default function IconButton({ icon, onPress, color, iconSize, style }) {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        onPress={onPress}
-      >
-        <FontAwesomeIcon icon={ icon } color={color} size={ iconSize } />
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.container, style]}
+    >
+      <FontAwesomeIcon icon={ icon } color={color} size={ iconSize } />
+    </TouchableOpacity>
   );
 }
 
