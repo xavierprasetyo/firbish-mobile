@@ -18,8 +18,21 @@ export default function ItemSave({ navigation }) {
       <ScrollView contentContainerStyle={styles.scrollContainer} style= {styles.container}>
         <Text style={styles.title}>Under Construction :D</Text>
         <Button
-          label="Lanjut"
+          label="Simpan dan ajukan"
           onPress={() => navigation.navigate('Home')}
+          style={{
+            width: '80%',
+            marginTop: 20,
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 3,
+            },
+            shadowOpacity: 0.27,
+            shadowRadius: 4.65,
+            elevation: 6,
+            fontFamily: 'Poppins_700Bold'
+          }}
         />
       </ScrollView>
     </View>
