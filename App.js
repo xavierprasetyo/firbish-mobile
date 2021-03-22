@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AppLoading from 'expo-app-loading';
-import { useFonts, Poppins_500Medium, Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
+import { useFonts, Poppins_500Medium, Poppins_400Regular, Poppins_700Bold, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
 import MainScreen from './page/MainScreen'
 import Inbox from './page/Inbox'
 import Favorites from './page/Favorites'
@@ -16,7 +16,8 @@ export default function App() {
   let [fontsLoaded] = useFonts({
     Poppins_500Medium,
     Poppins_400Regular,
-    Poppins_700Bold
+    Poppins_700Bold,
+    Poppins_600SemiBold
   });
 
   if (!fontsLoaded) {

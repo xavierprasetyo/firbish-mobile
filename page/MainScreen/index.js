@@ -13,7 +13,7 @@ const TabStack = createBottomTabNavigator();
 export default function MainScreen() {
   return (
     <TabStack.Navigator 
-			initialRouteName="ShoppingCart"
+			initialRouteName="ItemInput"
 			screenOptions={{
 				headerShown: false
 			}}
