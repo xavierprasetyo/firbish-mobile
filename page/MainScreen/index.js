@@ -64,7 +64,11 @@ export default function MainScreen() {
 				activeTintColor: '#3CD691',
 				inactiveTintColor: '#4C4752',
 				keyboardHidesTabBar: true,
-				style:{height: 65}
+				style: { 
+					height: 65,
+					borderTopRightRadius: 20,
+					borderTopLeftRadius: 20
+				}
 			}}
 		>
 			<TabStack.Screen name="Home" component={Home} />
