@@ -11,7 +11,16 @@ import {
 import { Button } from '../../../components'
 import CalendarPicker from 'react-native-calendar-picker';
 
-export default function ItemInput({ navigation }) {
+export default function ItemInput({ 
+  navigation, 
+  name, 
+  setName,
+  cat,
+  setCat,
+  price,
+  setPrice,
+  setPurchaseDate
+}) {
   return (
     <View style={styles.container} > 
       <View style={styles.titleContainer}>
@@ -41,6 +50,8 @@ export default function ItemInput({ navigation }) {
               style={styles.input} 
               placeholder='Isi nama produkmu disini...' 
               placeholderTextColor='#C4C4C4'
+              value={name}
+              onChangeText={(text) => setName(text)}
             />
           </View>
         </View>
@@ -54,6 +65,8 @@ export default function ItemInput({ navigation }) {
               style={styles.input} 
               placeholder='Isi kategori produkmu disini...' 
               placeholderTextColor='#C4C4C4'
+              value={cat}
+              onChangeText={(text) => setCat(text)}
             />
           </View>
         </View>
@@ -69,6 +82,8 @@ export default function ItemInput({ navigation }) {
               style={styles.input} 
               placeholder='Usulkan harga jual elektronikmu' 
               placeholderTextColor='#C4C4C4'
+              value={price}
+              onChangeText={(text) => setPrice(text)}
             />
           </View>
         </View>
@@ -79,12 +94,12 @@ export default function ItemInput({ navigation }) {
           <View style={styles.calendarContent}>
           <CalendarPicker
             width={350}
+            onDateChange={(date) => setPurchaseDate(date)}
           />
           </View>
         </View>
         <View style= {styles.progressContainer}>
           <View style={[styles.circle, styles.active]}/>
-          <View style={[styles.circle]}/>
           <View style={[styles.circle]}/>
         </View>
         <Button

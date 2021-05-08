@@ -4,20 +4,28 @@ import {
   View, 
   Text, 
   ScrollView,
+  TextInput
 } from 'react-native';
 import { Button, IconButton } from '../../../components'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import CalendarPicker from 'react-native-calendar-picker';
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
  
-export default function ItemCheck({ navigation }) {
-  const [check, setCheck] = useState(0)
+export default function ItemCheck({ 
+  navigation,
+  type,
+  setType,
+  setPickDate,
+  addr,
+  setAddr,
+  postItem
+}) {
   const radioItem = [
     {label: 'Drop-off di Furbish warehouse', value: 0},
     {label: 'Pick-up ke rumah', value: 1},
   ]
   const onPress = (e) => {
-    setCheck(e)
+    setType(e)
   }
   return (
     <View style={styles.container} > 
@@ -42,11 +50,11 @@ export default function ItemCheck({ navigation }) {
                     <RadioButtonInput
                       obj={obj}
                       index={i}
-                      isSelected={check === i}
+                      isSelected={type === i}
                       onPress={onPress}
                       borderWidth={1}
                       buttonInnerColor={'#4DCD53'}
-                      buttonOuterColor={check === i ? '#4DCD53' : '#4DCD53'}
+                      buttonOuterColor={type === i ? '#4DCD53' : '#4DCD53'}
                       buttonSize={20}
                       buttonOuterSize={30}
                       buttonStyle={{}}
@@ -72,19 +80,38 @@ export default function ItemCheck({ navigation }) {
             <Text style={styles.labelText}>Jadwalin yuk!</Text>
           </View>
           <View style={styles.calendarContent}>
-          <CalendarPicker
-            width={350}
-          />
+            <CalendarPicker
+              width={350}
+              onDateChange={(date) => setPickDate(date)}
+            />
           </View>
         </View>
+        {type === 0 ? 
+          <View style= {styles.addrContainer}>
+            <View style={styles.labelContainer}>
+              <Text style={styles.labelText}>Alamat Pengambilan</Text>
+            </View>
+            <View style={styles.addrContent}>
+              <TextInput 
+                style={styles.input} 
+                placeholder='Isi alamatmu disini...' 
+                placeholderTextColor='#C4C4C4'
+                value={addr}
+                onChangeText={(text) => setAddr(text)}
+              />
+            </View>
+          </View> 
+        : null}
+        
         <View style= {styles.progressContainer}>
           <View style={[styles.circle]}/>
           <View style={[styles.circle, styles.active]}/>
-          <View style={[styles.circle]}/>
         </View>
         <Button
-          label="Lanjut"
-          onPress={() => navigation.navigate('ItemSave')}
+          label="Simpan"
+          onPress={() => {
+            postItem().then(() => navigation.navigate('ItemSave'))
+          }}
           style={{
             width: '80%',
             marginTop: 20,
@@ -177,6 +204,19 @@ const styles = StyleSheet.create({
   },
   active: {
     backgroundColor: '#4DCD53',
-  }
+  },
+  input: {
+    fontFamily: 'Poppins_400Regular',
+  },
+  addrContainer: {
+    width: '85%',
+    marginTop: 20,
+    justifyContent: 'center',
+  },
+  addrContent: {
+    borderBottomWidth: 1,
+    borderColor: '#828282',
+    paddingVertical: 4
+  },
 });
 
