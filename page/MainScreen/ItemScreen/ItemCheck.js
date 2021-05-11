@@ -86,7 +86,7 @@ export default function ItemCheck({
             />
           </View>
         </View>
-        {type === 0 ? 
+        {type === 1 ? 
           <View style= {styles.addrContainer}>
             <View style={styles.labelContainer}>
               <Text style={styles.labelText}>Alamat Pengambilan</Text>
