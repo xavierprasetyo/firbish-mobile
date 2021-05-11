@@ -12,7 +12,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 export default function ItemSave({ 
   navigation,
-  items
+  items,
+  deleteItem
 }) {
   return (
     <View style={styles.container} > 
@@ -25,13 +26,16 @@ export default function ItemSave({
           <FontAwesomeIcon icon={ faPlusCircle } color={'#4C4752'} size={ 25 } />
           <Text style={styles.addLabel}>Tambah Produk</Text>
         </TouchableOpacity>
-        {items.map((item, index) => (
+        {items.map((item) => (
            <SellCard
-            key={index}
+            key={item.id}
+            id={item.id}
             name={item.name}
             category={item.category}
             price={item.price}
-            dropOff={item.dropOff}
+            pickDate={item.pickDate}
+            type={item.type}
+            deleteItem={deleteItem}
           />
         ))}
       </ScrollView>

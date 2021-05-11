@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faTag, faTrash, faEye,  faPen } from '@fortawesome/free-solid-svg-icons'
 import IconButton from './IconButton'
 
-export default function SellCard({ name, category, price, dropOff }) {
+export default function SellCard({ id, name, category, price, pickDate, type, deleteItem }) {
   const iconSize = 20
   return (
     <View style={styles.container}>
@@ -23,12 +23,12 @@ export default function SellCard({ name, category, price, dropOff }) {
         <Text style={styles.priceLabel}>Rp {price}</Text>
       </View>
       <View style={styles.timeContainer}>
-        <Text style={styles.timeLabel} >Jadwal Drop-off: {dropOff}</Text>
+        <Text style={styles.timeLabel} >Jadwal {type === 0 ? 'Drop-off' : 'Pick-up'} : {pickDate}</Text>
       </View>
       <View style={styles.iconContainer}>
         <IconButton style={styles.iconBtn} icon={ faEye } color="#828282" iconSize={iconSize}/>
         <IconButton style={styles.iconBtn} icon={ faPen } color="#828282" iconSize={iconSize}/>
-        <IconButton style={styles.iconBtn} icon={ faTrash } color="#828282" iconSize={iconSize}/>
+        <IconButton style={styles.iconBtn} icon={ faTrash } color="#828282" iconSize={iconSize} onPress={(e) => deleteItem(id)}/>
       </View>
     </View>
   );
