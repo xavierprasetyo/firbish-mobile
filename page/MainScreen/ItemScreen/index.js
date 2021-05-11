@@ -10,7 +10,7 @@ import 'moment/locale/id'
 const ItemStack = createStackNavigator()
 moment.locale('id')
 
-const publicIP = 'http://23.99.100.15:8080'
+const publicIP = 'http://13.75.41.84:8080'
 //const devURL = 'http://192.168.1.7:8080'
 
 const url = publicIP
